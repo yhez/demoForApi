@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">UseApi</string>
+    <string name="hint_name">Name of file</string>
+    <string name="hint_data">Data</string>
+    <string name="put">Put file</string>
+    <string name="get">Get file</string>
+    <string name="failed">Action failed</string>
+    <string name="success">Action success</string>
+
+</resources>

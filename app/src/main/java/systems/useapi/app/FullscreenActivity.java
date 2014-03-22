@@ -35,12 +35,23 @@ public class FullscreenActivity extends Activity {
             SpecSafeHelper.getFileFromSafe(this, name.getText().toString());
         } else if (v.getId() == R.id.put) {
             SpecSafeHelper.saveFileInSafe(this, name.getText().toString(), data.getText().toString().getBytes());
+        }else if(v.getId()==R.id.choose){
+            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+            intent.addCategory(Intent.CATEGORY_OPENABLE);
+            intent.setType("*/*");
+            Intent i = Intent.createChooser(intent, "Choose file to save");
+            startActivityForResult(i, 99);
         }
     }
 
     @Override
     public void onActivityResult(int req, int res, Intent intent) {
         if (res == RESULT_OK) {
+            if(req==99){
+                data.setText(intent.getData().getPath());
+                name.setText(intent.getData().getLastPathSegment());
+                return;
+            }
             Toast.makeText(this, R.string.success, Toast.LENGTH_SHORT).show();
             if (req == SpecSafeHelper.ACTION_GET) {
                 byte[] result = intent.getByteArrayExtra("bytes");

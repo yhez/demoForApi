@@ -20,7 +20,7 @@ public class SpecSafeHelper {
             FAILED_NO_PUBLIC=14,
             UNKNOWN_PROBLEM_WHILE_ENCRYPTING=15,
             UNKNOWN_PROBLEM_WHILE_DECRYPTING=16;
-    public final static int ACTION_PUT = 1, ACTION_GET = 2;
+    public final static int ACTION_PUT = 1, ACTION_GET = 2,ACTION_GET_ALL=3;
 
     //the name is used to get back the file afterwards
     //the byte array is the actually data to encrypt
@@ -40,6 +40,12 @@ public class SpecSafeHelper {
         i.putExtra("action", ACTION_GET);
         i.putExtra("name", nameOfFile);
         start(i, activity);
+    }
+
+    public static void getListFile(Activity activity){
+        Intent i = new Intent();
+        i.putExtra("action",ACTION_GET_ALL);
+        start(i,activity);
     }
 
     private static void start(Intent i, Activity activity) {

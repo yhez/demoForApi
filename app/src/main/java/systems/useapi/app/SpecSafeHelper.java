@@ -27,7 +27,7 @@ public class SpecSafeHelper {
     public static void saveFileInSafe(Activity activity, String nameOfFile, byte[] data) {
         Intent i = new Intent();
         i.putExtra("action", ACTION_PUT);
-        if(data[0]=='/')
+        if(data.length>0&&data[0]=='/')
             i.putExtra(Intent.EXTRA_STREAM,Uri.parse(new String(data)));
         else
             i.putExtra("bytes", data);
